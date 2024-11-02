@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    const int entryFee = 5;      
+    const int snackCost = 15;   
+    const int maxStudents = 15;   
+    int numStudents;
+
+    cout << "Welcome to the Game Night Registration!"<<endl;
+    cout << "Enter the number of students who wish to attend (Max " << maxStudents << "): ";
+    cin >> numStudents;
+    if (numStudents > maxStudents) {
+        cout << "Error: You cannot register more than " << maxStudents << " students."<<endl;
+        return 1;  
+    }
+        string studentNames[maxStudents];  
+    int totalCost = 0;
+    cout << "\nPlease enter the names of the students:"<<endl;
+    for (int i = 0; i < numStudents; ++i) {
+        cout << "Student " << (i + 1) << " Name: ";
+        cin >> studentNames[i];
+        int studentCost = entryFee + snackCost;
+        totalCost += studentCost;
+
+        cout << "Registered: " << studentNames[i] 
+             << " | Entry: $" << entryFee 
+             << ", Snacks: $" << snackCost 
+             << ", Total per student: $" << studentCost << endl;
+    }
+
+    cout << "\nList of Registered Students for Game Night:\n";
+    for (int i = 0; i < numStudents; ++i) {
+        cout << "Participant " << (i + 1) << ": " << studentNames[i] << endl;
+    }
+    cout << "\nTotal Cost for All Students: $" << totalCost << endl;
+
+    return 0;
+}
